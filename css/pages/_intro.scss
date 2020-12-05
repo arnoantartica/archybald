@@ -1,0 +1,121 @@
+// SWIPER INTRO
+#intro{
+  .swiper-container {
+    width: 100vw;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  .swiper-slide {
+    &.intro-1{
+      background: url('../img/slide-intro1.jpg') center/cover;
+    }
+    &.intro-2{
+      background: url('../img/slide-intro2.jpg') center/cover;
+    }
+    &.intro-3{
+      background: url('../img/slide-intro3.jpg') center/cover;
+    }
+  }
+  
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 3.8em;
+  }
+  .swiper-pagination-bullet {
+    width: 10.5px;
+    height: 10.5px;
+    display: inline-block;
+    border-radius: 100%;
+    border: 1px solid white;
+    background: none;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background: white;
+    border: 5px solid white;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 2.5px;
+  }
+}
+
+
+
+
+#intro{
+  position: relative;
+  aside{
+    position: absolute;
+    overflow: hidden;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5em;
+    img{
+      width: 460px;
+      display: block;
+    }
+    .explore{
+      text-align: center;
+      padding-top: 2.5em;
+      a{
+        display: inline-block;
+      }
+      button{
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 3px;
+        font-size: .95em;
+        color: white;
+        background: rgba($color: #000000, $alpha: 0.05);
+        border: 1px solid $dark;
+        padding: 1.2em 2em;
+        cursor: pointer;
+        transition: .2s all ease-in-out;
+        &:hover{
+          background: white;
+          color: black;
+        }
+      }
+    }
+  }
+}
+/* Logo Animation */
+.anim-1{
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: .8s all ease-in-out;
+  &.active{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.anim-2{
+  transform: translateY(50px);
+  opacity: 0;
+  transition: .8s all ease-in-out;
+  &.active{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.anim-3{
+  transform: translateY(20px);
+  opacity: 0;
+  transition: .5s all ease-in-out;
+  &.active{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive 1 */
+@media screen and(max-width:1100px){
+  #intro{
+    aside{
+      img{
+        max-width: 60vw;
+      }
+    }
+  }
+}

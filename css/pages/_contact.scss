@@ -1,0 +1,122 @@
+#contact{
+  .col{
+    margin-top: 4.5em;
+    @media screen and(max-width:1000px){
+      text-align: center;
+    }
+  }
+  .fas{
+    margin-bottom: .2em;
+  }
+  .contact-info{
+    p, a{
+      margin-bottom: 1.5em;
+    }
+    a{
+      display: block;
+    }
+  }
+  form{
+    width: 50vw;
+    @media screen and(max-width:1000px){
+      width: 100%;
+    }
+    input[type="text"], textarea{
+      background: none;
+      border: none;
+      border-bottom: 1px solid #fff;
+      width: 100%;
+      padding: .7em 0;
+      margin-bottom: 2em;
+      color: rgb(231, 231, 231);
+      letter-spacing: 1px;
+      &::placeholder{
+        color: rgb(145, 145, 145);
+        font-size: .85em;
+      }
+    }
+    textarea{
+      height: 110px;
+    }
+    .conditions{
+      display: flex;
+      p{
+        margin: 0;
+        line-height: 1.2em !important;
+        color: rgb(145, 145, 145) !important;
+        font-size: .8em !important;
+        letter-spacing: 1px;
+        margin-left: .8em;
+      }
+      input[type="checkbox"]{
+        margin-top: 2px;
+      }
+    }
+    .checkbox-wrap{
+      display: flex;
+      @media screen and(max-width:1000px){
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      input[type="checkbox"]{
+        width: 35px;
+        height: 17px;
+        @media screen and(min-width:1001px){
+          margin-right: 10px;
+        }
+      }
+      
+      .checkbox-caption{
+        line-height: 1.5rem; 
+        margin-top: 5px; 
+        vertical-align: top; 
+        font-size: .8em; 
+        letter-spacing: .1em;
+        @media screen and(min-width:1001px){
+          margin-top: -5px; 
+        }
+      }
+    }
+    .submit-wrap{
+      text-align: right;  
+      padding-top: 40px;
+      @media screen and(max-width:1000px){
+        text-align: center;  
+      }
+    }
+    input[type="submit"]{
+      margin-top: 2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 3px;
+      font-size: .95em;
+      color: white;
+      background: rgba(0, 0, 0, 0.1);
+      border: 2px solid white;
+      padding: 1.2em 1.8em;
+      cursor: pointer;
+      -webkit-transition: .2s all ease-in-out;
+      transition: .2s all ease-in-out;
+      &:hover{
+        background: white;
+        color: black;
+      }
+    }
+  }
+  .bottom-info{
+    text-align: center;
+    font-size: .9em;
+    line-height: 1.5em;
+    margin-top: 6em;
+    p.white{
+      color: white;
+      line-height: 1.8em;
+    }
+    p.grey{
+      margin-top: 3em;
+      font-size: .85em;
+      color:  rgb(145, 145, 145);
+    }
+  }
+}

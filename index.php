@@ -4,7 +4,6 @@
 
     <aside>
         <!-- logo top -->
-        <img src="img/logo-archybald-top.png" alt="archybald" class="anim-1">
         <!-- logo bottom -->
         <img src="img/logo-archybald-bottom.png" alt="archybald" class="anim-3">
         <!-- explore -->

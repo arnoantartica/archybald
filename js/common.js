@@ -1,5 +1,5 @@
 var client_id = "c7b837316d7c4014ba59";
-var langs = new Array(/*'de-DE',*/ 'en-GB', 'fr-FR', 'nl-BE');
+var langs = new Array(/*'de-DE',*/ 'en-GB', 'fr-BE', 'nl-BE');
 var langs_name = new Array(/*'Deutsch',*/ 'en', 'fr', 'nl');
 
 var $cur_cnt = 0;
@@ -30,7 +30,7 @@ if(l) {
 } else {
     lang = getCookie('lang');
     if(langs.indexOf(lang) == -1) {
-        lang = 'fr-FR';
+        lang = 'fr-BE';
         setLanguage(lang);
     }
 }
@@ -1862,8 +1862,8 @@ DisplacementSliderCtrl();
 
         $(this).find('Documents EstateServiceGetEstateListResponseDocument').each(function() {
             var dl = $(this).find('LanguageID').text();
-            
-            if((lang == 'nl-BE' && dl == 'nl-BE') || (lang != 'nl-BE' && dl != 'nl-BE')) {
+            // debugger;
+            if(lang === dl) {
                 var doct = $(this).find('Description').text();
                 var fn = $(this).find('Url').text().substring($(this).find('Url').text().lastIndexOf('/')+1);
                 fn = fn.substring(fn.indexOf('-')+1);
@@ -1876,6 +1876,7 @@ DisplacementSliderCtrl();
                 var data = '<a href="' + $(this).find('Url').text() + '" download="' + $(this).find('Url').text() + '" target="_blank" class="pdf" title="' + doct + '"><button data-lang="btnMoreDetail">' + text + '</button></a>';
 
                 $('#docs').append(data);
+                return false;
             }
         });
     });

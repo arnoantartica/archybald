@@ -1332,13 +1332,13 @@ function parserDetail(xml) {
 
 
 
-        images_for_displacement_slider = ["https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/6c49a7aa8c484da69c461777c93834cf.jpg", 
-        "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/6bd2080577e740cba273488f66357258.jpg", 
-        "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/c79ffea36cef488cbc6872f0cac0ab3d.jpg",
-        "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/d1b1a96d353e42e0ba081d01ce068e13.jpg",
-        "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/0840747ab7f3442b914efab63222b679.jpg"
-        ];
-        console.log('images_for_displacement_slider', images_for_displacement_slider)
+        // images_for_displacement_slider = ["https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/6c49a7aa8c484da69c461777c93834cf.jpg", 
+        // "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/6bd2080577e740cba273488f66357258.jpg", 
+        // "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/c79ffea36cef488cbc6872f0cac0ab3d.jpg",
+        // "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/d1b1a96d353e42e0ba081d01ce068e13.jpg",
+        // "https://whisestorageprod.blob.core.windows.net/public/archybald/Pictures/3808117/1920/0840747ab7f3442b914efab63222b679.jpg"
+        // ];
+        // console.log('images_for_displacement_slider', images_for_displacement_slider)
 
 
 
@@ -1466,8 +1466,13 @@ function DisplacementSliderCtrl() {
           _this.createSlider();
 
           log('sliderCreated'); // this.loader.hide();
+          galleryThumbs.on('slideNextTransitionStart', function() {
+              if (galleryThumbs.autoplay.running === true) {
+                  slider.nextSlide();
+              }
+          });
+          galleryThumbs.autoplay.start();
         });
-        console.log('this', this);
       }
     }, {
       key: "createSlider",
@@ -1484,7 +1489,9 @@ function DisplacementSliderCtrl() {
         this.addSlides();
         this.createDisplacementFilter();
         this.buttonEvents();
-        $('#canvas_slider').addClass('show-me')
+        $('#displacement_slider').addClass('show-me')
+        $('.wrap-detail').addClass('hide-me')
+        $('.pause-wrap').addClass('displacement-slider-loaded')
       }
     }, {
       key: "addSlides",
@@ -1533,9 +1540,10 @@ function DisplacementSliderCtrl() {
           slide.alpha = i === 0 ? 1 : 0;
           slide.original_adapted_image_w = slide.width;
           slide.original_adapted_image_h = slide.height;
-          log('slide', slide);
+          // log('slide', slide);
           _this3.slides[i] = slide;
           _this3.slides[i].y_offset = slide.y;
+          _this3.slides[i].x_offset = slide.x;
 
           _this3.slider.addChild(slide);
 
@@ -1566,10 +1574,15 @@ function DisplacementSliderCtrl() {
         if (this.slides.activeIndex + 2 >= this.slides.count) {// this.nextBtn.setAttribute( 'disabled', 'disabled' );
         }
 
-        galleryThumbs.slideNext();
+        // console.log('galleryThumbs.autoplay', galleryThumbs.autoplay)
+        if (galleryThumbs.autoplay.running === false) {
+            galleryThumbs.slideNext();
+        }
+
         var tl = new TimelineMax({
           onStart: function onStart() {
             _this4.animating = true;
+            $('.for-gallery-thumbs').hide()
           },
           onComplete: function onComplete() {
             if (_this4.slides.activeIndex + 1 >= _this4.slides.count) {
@@ -1577,6 +1590,7 @@ function DisplacementSliderCtrl() {
             } else {
               _this4.slides.activeIndex++;
             }
+            $('.for-gallery-thumbs').show()
 
             _this4.animating = false;
           }
@@ -1586,6 +1600,7 @@ function DisplacementSliderCtrl() {
         if (this_index === 0) {
           tl.to(this.slides[last_index], 0.3, {
             y: this.slides[last_index].y_offset,
+            x: this.slides[last_index].x_offset,
             alpha: 0 // ease: 'Expo.easeInOut'
 
           }, 0);
@@ -1593,20 +1608,23 @@ function DisplacementSliderCtrl() {
 
         tl.to(this.slides[this_index], 0.3, {
           y: this.slides[this_index].y_offset,
+          x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
 
         }, 0).fromTo(this.slides[next_index], 0.8, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 0
         }, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
         }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 20,
+          x: 30,
           y: 0 // ease: 'Power2.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.5, {
+        }, 0).to(this.dispFilter.scale, 0.8, {
           x: 0,
           y: 0 // ease: 'Power2.easeInOut'
 
@@ -1636,6 +1654,7 @@ function DisplacementSliderCtrl() {
         var tl = new TimelineMax({
           onStart: function onStart() {
             _this5.animating = true;
+            $('.for-gallery-thumbs').hide()
           },
           onComplete: function onComplete() {
             if (_this5.slides.activeIndex === 0) {
@@ -1643,6 +1662,7 @@ function DisplacementSliderCtrl() {
             } else {
               _this5.slides.activeIndex--;
             }
+            $('.for-gallery-thumbs').show()
 
             _this5.animating = false;
           }
@@ -1652,28 +1672,31 @@ function DisplacementSliderCtrl() {
         if (this_index === 0) {
           tl.to(this.slides[last_index], 0.3, {
             y: this.slides[last_index].y_offset,
+            x: this.slides[last_index].x_offset,
             alpha: 0 // ease: 'Expo.easeInOut'
 
           }, 0);
         }
 
         tl.to(this.slides[this_index], 0.3, {
-          // y: this.app.screen.height,
           y: this.slides[this_index].y_offset,
+          x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
 
         }, 0).fromTo(this.slides[next_index], 0.8, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 0
         }, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
         }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 20,
+          x: 30,
           y: 0 // ease: 'Power2.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.5, {
+        }, 0).to(this.dispFilter.scale, 0.8, {
           x: 0,
           y: 0 // ease: 'Power2.easeInOut'
 
@@ -1691,29 +1714,33 @@ function DisplacementSliderCtrl() {
         var tl = new TimelineMax({
           onStart: function onStart() {
             _this6.animating = true;
+            $('.for-gallery-thumbs').hide();
           },
           onComplete: function onComplete() {
             _this6.slides.activeIndex = next_index;
             _this6.animating = false;
+            $('.for-gallery-thumbs').show();
           }
         });
         tl.to(this.slides[this_index], 0.3, {
-          // y: this.app.screen.height,
           y: this.slides[this_index].y_offset,
+          x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
 
         }, 0).fromTo(this.slides[next_index], 0.8, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 0
         }, {
           y: this.slides[next_index].y_offset,
+          x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
         }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 20,
+          x: 30,
           y: 0 // ease: 'Power2.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.5, {
+        }, 0).to(this.dispFilter.scale, 0.8, {
           x: 0,
           y: 0 // ease: 'Power2.easeInOut'
 
@@ -1767,7 +1794,7 @@ function DisplacementSliderCtrl() {
         $canvas.style.height = canvas_holder_h + 'px';
         var i = 0;
         Object.keys(this.slides).forEach(function (key) {
-          log('this.slides', _this8.slides);
+          // log('this.slides', _this8.slides);
           var transformation_ratio_w = canvas_holder_w / _this8.slides[key].original_canvas_w;
           var transformation_ratio_h = canvas_holder_h / _this8.slides[key].original_canvas_h; // this.slides[key].width = this.slides[key].original_canvas_w / transformation_ratio_w
           // this.slides[key].height = this.slides[key].original_canvas_h / transformation_ratio_h
@@ -1803,27 +1830,26 @@ function DisplacementSliderCtrl() {
 
   var slider = new Slider(document.getElementById('canvas_slider'));
   $('.gallery-thumbs .swiper-slide').on('click', function () {
+
+    if (slider.animating) return false;
     var index = parseInt($(this).attr('data-swiper-slide-index')); // log('index', index)
 
     slider.reachSlide(index);
     galleryThumbs.slideToLoop(index);
+
+    galleryThumbs.autoplay.stop();
+    $('.pause-btn').addClass('active')
   });
-  var animating_is_running = false;
-  var animation_duration = 1100;
+
   $('.prev-slide.for-gallery-thumbs').on('click', function () {
+    if (slider.animating) return false;
     slider.prevSlide();
   });
-  $('.next-slide.for-gallery-thumbs').on('click', function (e) {
-    slider.nextSlide(); // if(!animating_is_running) {
-    //     animating_is_running = true;
-    //     setTimeout(function(){ animating_is_running = false }, 1100);
-    // } else {
-    //     galleryThumbs.detachEvents();
-    // }
+  $('.next-slide.for-gallery-thumbs').on('click', function () {
+    if (slider.animating) return false;
+    slider.nextSlide(); 
   });
 }
-
-;
 
 ;
 

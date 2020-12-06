@@ -1507,6 +1507,7 @@ function DisplacementSliderCtrl() {
         var container_w = $canvas_holder.offsetWidth;
         var container_h = $canvas_holder.offsetHeight;
         var container_ra = container_w / container_h;
+        var root_url = window.location.href.match(/^.*\//);
         Object.keys(this.images).forEach(function (key) {
           var slide = new PIXI.Sprite(_this3.images[key].texture);
           var source_image_w = _this3.images[key].data.width;
@@ -1540,7 +1541,18 @@ function DisplacementSliderCtrl() {
           slide.alpha = i === 0 ? 1 : 0;
           slide.original_adapted_image_w = slide.width;
           slide.original_adapted_image_h = slide.height;
-          // log('slide', slide);
+
+            slide.filterArea = this.clipRect;
+            slide.dispSprite = PIXI.Sprite.fromImage(root_url + 'img/displacement_filter.jpg');
+            slide.dispSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+            slide.dispSprite.skew.x = 1;
+            slide.dispSprite.skew.y = -1;
+            slide.dispSprite.position.y = 380;
+            slide.dispSprite.scale.y = 1.8;
+            slide.dispSprite.scale.x = 1.8;
+            slide.dispFilter = new PIXI.filters.DisplacementFilter( slide.dispSprite, 0 );
+            slide.filters = [ slide.dispFilter ];
+
           _this3.slides[i] = slide;
           _this3.slides[i].y_offset = slide.y;
           _this3.slides[i].x_offset = slide.x;
@@ -1598,7 +1610,7 @@ function DisplacementSliderCtrl() {
         var last_index = this.slides.count - 1;
 
         if (this_index === 0) {
-          tl.to(this.slides[last_index], 0.3, {
+          tl.to(this.slides[last_index], 0.7, {
             y: this.slides[last_index].y_offset,
             x: this.slides[last_index].x_offset,
             alpha: 0 // ease: 'Expo.easeInOut'
@@ -1606,7 +1618,7 @@ function DisplacementSliderCtrl() {
           }, 0);
         }
 
-        tl.to(this.slides[this_index], 0.3, {
+        tl.to(this.slides[this_index], 0.7, {
           y: this.slides[this_index].y_offset,
           x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
@@ -1620,15 +1632,15 @@ function DisplacementSliderCtrl() {
           x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 30,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0).to(this.dispFilter.scale, 0.8, {
-          x: 0,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0.3);
+        }, 0)
+        .fromTo( this.slides[ next_index ].dispFilter.scale, 0.8, {
+            x: 400,
+            y: 0,
+        }, {
+            x: 0,
+            y: 0,
+            // ease: 'Expo.easeInOut'
+        }, 0 );
       }
     }, {
       key: "prevSlide",
@@ -1670,7 +1682,7 @@ function DisplacementSliderCtrl() {
         var last_index = this.slides.count - 1;
 
         if (this_index === 0) {
-          tl.to(this.slides[last_index], 0.3, {
+          tl.to(this.slides[last_index], 0.7, {
             y: this.slides[last_index].y_offset,
             x: this.slides[last_index].x_offset,
             alpha: 0 // ease: 'Expo.easeInOut'
@@ -1678,7 +1690,7 @@ function DisplacementSliderCtrl() {
           }, 0);
         }
 
-        tl.to(this.slides[this_index], 0.3, {
+        tl.to(this.slides[this_index], 0.7, {
           y: this.slides[this_index].y_offset,
           x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
@@ -1692,15 +1704,15 @@ function DisplacementSliderCtrl() {
           x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 30,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0).to(this.dispFilter.scale, 0.8, {
-          x: 0,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0.3);
+        }, 0)
+        .fromTo( this.slides[ next_index ].dispFilter.scale, 0.8, {
+            x: 400,
+            y: 0,
+        }, {
+            x: 0,
+            y: 0,
+            // ease: 'Expo.easeInOut'
+        }, 0 );
       }
     }, {
       key: "reachSlide",
@@ -1722,7 +1734,7 @@ function DisplacementSliderCtrl() {
             $('.for-gallery-thumbs').show();
           }
         });
-        tl.to(this.slides[this_index], 0.3, {
+        tl.to(this.slides[this_index], 0.7, {
           y: this.slides[this_index].y_offset,
           x: this.slides[this_index].x_offset,
           alpha: 0 // ease: 'Expo.easeInOut'
@@ -1736,30 +1748,30 @@ function DisplacementSliderCtrl() {
           x: this.slides[next_index].x_offset,
           alpha: 1 // ease: 'Expo.easeInOut'
 
-        }, 0).to(this.dispFilter.scale, 0.3, {
-          x: 30,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0).to(this.dispFilter.scale, 0.8, {
-          x: 0,
-          y: 0 // ease: 'Power2.easeInOut'
-
-        }, 0.3);
+        }, 0)
+        .fromTo( this.slides[ next_index ].dispFilter.scale, 0.8, {
+            x: 400,
+            y: 0,
+        }, {
+            x: 0,
+            y: 0,
+            // ease: 'Expo.easeInOut'
+        }, 0 );
       }
     }, {
       key: "createDisplacementFilter",
       value: function createDisplacementFilter() {
-        var root_url = window.location.href.match(/^.*\//);
-        this.dispSprite = PIXI.Sprite.fromImage(root_url + 'img/displacement_filter.jpg');
-        this.dispSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-        this.dispSprite.skew.x = 1;
-        this.dispSprite.skew.y = -1;
-        this.dispSprite.position.y = 380;
-        this.dispSprite.scale.y = 1.8;
-        this.dispSprite.scale.x = 1.8;
-        this.app.stage.addChild(this.dispSprite);
-        this.dispFilter = new PIXI.filters.DisplacementFilter(this.dispSprite, 0);
-        this.slider.filters = [this.dispFilter];
+        // var root_url = window.location.href.match(/^.*\//);
+        // this.dispSprite = PIXI.Sprite.fromImage(root_url + 'img/displacement_filter.jpg');
+        // this.dispSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+        // this.dispSprite.skew.x = 1;
+        // this.dispSprite.skew.y = -1;
+        // this.dispSprite.position.y = 380;
+        // this.dispSprite.scale.y = 1.8;
+        // this.dispSprite.scale.x = 1.8;
+        // this.app.stage.addChild(this.dispSprite);
+        // this.dispFilter = new PIXI.filters.DisplacementFilter(this.dispSprite, 0);
+        // this.slider.filters = [this.dispFilter];
       }
     }, {
       key: "buttonEvents",
@@ -1848,6 +1860,13 @@ function DisplacementSliderCtrl() {
   $('.next-slide.for-gallery-thumbs').on('click', function () {
     if (slider.animating) return false;
     slider.nextSlide(); 
+  });
+
+  $('.next-slide.slider-arrows.displacement').on('click', function () {
+      galleryThumbs.autoplay.stop();
+  });
+  $('.prev-slide.slider-arrows.displacement').on('click', function () {
+      galleryThumbs.autoplay.stop();
   });
 }
 

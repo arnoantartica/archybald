@@ -6,8 +6,9 @@
     <main id="detail-bien">
         <?php require('include/menu.php'); ?>
         <?php require('include/contact-info.php'); ?>
+        
         <!-- Loader -->
-        <div class="wrap">
+        <div class="wrap-detail">
             <div class="loading">
                 <div class="bounceball"></div>
                 <img src="img/logo-archybald-top.png" alt="Archybald" class="text" width="80">

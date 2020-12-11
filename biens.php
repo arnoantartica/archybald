@@ -45,7 +45,7 @@
 function getMainData() {
 
     urlParameters.lang = lang;
-    urlParameters.countryID = 1
+    urlParameters.countryID = getInitialCountryID()
     urlParameters.purposeStatusIDList = "[1,2]";
     getBiens({
         replace: false,

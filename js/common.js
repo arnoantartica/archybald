@@ -1236,6 +1236,8 @@ function parserDetail(xml) {
 
         if(kw !== ""){
             $('.e-spec').html("<strong>PEB (E-SPEC):</strong> " + kw);
+        }else{
+          $('.e-spec').remove()
         }
 // || $(this).find('SubDetailId').text() == '2090' ----CO2
 
@@ -2121,11 +2123,23 @@ function parserList(xml, replace) {
 
     setLanguage(lang);
 }
-
+function getInitialCountryID(){
+  var initialState = sessionStorage.getItem('countryID');
+  if(initialState !== null){
+    return initialState * 1 === 0 ? '' : 1;
+  }else{
+    return 1
+  }
+}
 function filtersInit () {
     
     if($('.filters-type_btn').length){
-        localStorage.setItem('countryID', urlParameters.countryID);
+        var initialState = getInitialCountryID()
+        localStorage.setItem('countryID', initialState);
+        sessionStorage.setItem('countryID', initialState);
+
+        initialState = initialState === '' ? 'all' : initialState;
+        jQuery('.filters-type_btn[data-filter="' + initialState + '"]').addClass('active')
     }
 
     $('.filterLink').click(function(e){
@@ -2152,6 +2166,7 @@ function filtersInit () {
 
         if(dataField === "countryID"){
             localStorage.setItem('countryID', dataVal);
+            sessionStorage.setItem('countryID', dataVal);
         }
 
         urlParameters['categoryIDList'] = '';

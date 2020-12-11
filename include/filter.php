@@ -2,7 +2,7 @@
 <aside class="filters">
     <div class="filters-row">
         <div class="filters-type">
-            <button class="filters-type_btn filterLink active" data-field="countryID" data-filter="1" data-lang="local">Belgique</button>
+            <button class="filters-type_btn filterLink" data-field="countryID" data-filter="1" data-lang="local">Belgique</button>
             <button class="filters-type_btn filterLink" data-field="countryID" data-filter="all" data-lang="alien">Étranger</button>
         </div>
         <div class="search"><form action="" name="searchByref"><input type="text" name="s" data-lang-placeholder="SearchWithReference" placeholder="My reference"> <button><i class="fas fa-search"></i></button></form></div>

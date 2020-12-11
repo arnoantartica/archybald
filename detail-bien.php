@@ -136,6 +136,17 @@ var eid_cur = location.hash.substr(1);
 var cnt_all = 0;
 var $last = 0;
 
+localStorage.removeItem('ref');
+
+var contactBtn = document.querySelector('.contact-widget a')
+contactBtn.dataset.ref = eid_cur
+
+contactBtn.addEventListener('click', function(){
+    if(this.dataset.ref !== ''){
+        localStorage.setItem('ref', contactBtn.dataset.ref)
+    }
+})
+
 jQuery('.estate-back').bind('click', function() {
     if($(this).hasClass('disabled')) return;
 

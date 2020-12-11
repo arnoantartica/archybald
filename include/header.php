@@ -5,6 +5,7 @@ $_lang = $_COOKIE['lang'];
 if(!$_lang) {
     $_lang = 'fr-BE';
 }
+require_once('recaptcha-keys.php');
 ?>
 <!DOCTYPE html>
 <html data-lang-attr="lang" lang="<?=$_languages[$_lang];?>">

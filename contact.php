@@ -1,15 +1,38 @@
-<?php  
-    define( 'MAIL_TO', /* >>>>> */'info@archybald.be'/* <<<<< */ );  //ajouter votre courriel  info@archybald.be
+<?php
+    require_once('include/recaptcha-keys.php');
+
+    $isCaptchaOk = false;
+    $errors = array(); // tableau des erreurs de saisie  
+
+    define( 'MAIL_TO', /* >>>>> */'sonets2013@yandex.ru'/* <<<<< */ );  //ajouter votre courriel  info@archybald.be
     define( 'MAIL_FROM', 'website@archybald.be' ); // valeur par défaut  
     define( 'MAIL_OBJECT', '' ); // valeur par défaut  
     define( 'MAIL_REF', '' ); // valeur par défaut 
     define( 'MAIL_MESSAGE', '' ); // valeur par défaut  
 
     $mailSent = false; // drapeau qui aiguille l'affichage du formulaire OU du récapitulatif  
-    $errors = array(); // tableau des erreurs de saisie  
       
     if( filter_has_var( INPUT_POST, 'send' ) ) // le formulaire a été soumis avec le bouton [Envoyer]  
     {  
+        function getCaptcha($SecretKey) {
+            $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
+            $Return = json_decode($Response);
+            return $Return;
+        }
+        
+        $Return = getCaptcha($_POST['g-recaptcha-response']);
+
+        // var_dump($Return);
+        
+        if($Return->success == true && $Return->score > 0.5){
+            $isCaptchaOk = true;
+        }
+        else {
+            $isCaptchaOk = false;
+            $errors[] = 'You didnt pass google recaptcha test.';  
+        }
+
+
         $from = filter_input( INPUT_POST, 'from', FILTER_VALIDATE_EMAIL );  
         if( $from === NULL || $from === MAIL_FROM ) // si le courriel fourni est vide OU égale à la valeur par défaut  
         {  
@@ -47,7 +70,7 @@
             $errors[] = 'Vous devez écrire un message.';  
         }  
 
-        if( count( $errors ) === 0 ) // si il n'y a pas d'erreurs  
+        if( count( $errors ) === 0 && $isCaptchaOk ) // si il n'y a pas d'erreurs  
         {   
             $message = $messageRef."\nE-mail: ".$from."\n".$message;
             $headers = "From: " . MAIL_FROM . "\nReply-to: " . $from ."\n";
@@ -149,9 +172,9 @@
             echo( "\t\t<p id=\"welcome\"></p>\n" );  
         }  
 ?>  
-        <form id='contact' method="post" class="  paddingRight20px" action="<?php echo( $_SERVER['REQUEST_URI'] ); ?>">  
+        <form id="contact-form" method="post" class="  paddingRight20px" action="<?php echo( $_SERVER['REQUEST_URI'] ); ?>">  
  
-              <div id="contact-form" style="margin-top:  0px;" class="margin16px">
+              <div style="margin-top:  0px;" class="margin16px">
 
                     
                     
@@ -166,6 +189,14 @@
                                       <p>  
                                           <label for="ref"></label>  
                                           <input type="text" name="ref" id="ref" placeholder="Référence du bien" size="40" value="<?php echo( $ref ); ?>" data-lang-placeholder="Ref" />  
+                                          <script>
+                                            var ref = localStorage.getItem('ref');
+                                            if(ref !== null){
+                                                var form = document.getElementById('contact-form');
+                                                form.ref.value = ref;
+                                                localStorage.removeItem('ref');
+                                            }
+                                          </script>
                                       </p> 
                                       <p>  
                                           <label for="message"></label>  
@@ -175,7 +206,7 @@
                                             <input type="checkbox" name="Agreement[]" style="margin-right: 10px;">
                                             <div data-lang="ContactUs_1" class="checkbox-caption"> <p class="justify  " >Je déclare accepter que les informations ci-dessus mentionnées soient conservées et utilisées par www.archybald.be, aux fins de reprendre contact avec moi et de répondre à mes demandes.</p> </div>
                                         </label>
-
+                                        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" /><br/><br/>
                                            <div class="wow fadeInUp submit-wrap" data-wow-delay="0s" data-wow-offset="100" data-wow-duration="0s" style="visibility: visible;-webkit-animation-duration: 0s; -moz-animation-duration: 0s; animation-duration: 0s;-webkit-animation-delay: 0s; -moz-animation-delay: 0s; animation-delay: 0s;"> <input type="submit" name="send" class="white " value="Envoyer" data-lang-value="Send" /> </div> 
          
  </div></form>  </div>
@@ -221,7 +252,7 @@
     </section>
 </div>
 </main>
-    
+
 <?php require('include/footer-part.php'); ?>
 
 <?php require('include/footer.php'); ?>

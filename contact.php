@@ -4,7 +4,7 @@
     $isCaptchaOk = false;
     $errors = array(); // tableau des erreurs de saisie  
 
-    define( 'MAIL_TO', /* >>>>> */'sonets2013@yandex.ru'/* <<<<< */ );  //ajouter votre courriel  info@archybald.be
+    define( 'MAIL_TO', /* >>>>> */'info@archybald.be'/* <<<<< */ );  //ajouter votre courriel  info@archybald.be
     define( 'MAIL_FROM', 'website@archybald.be' ); // valeur par défaut  
     define( 'MAIL_OBJECT', '' ); // valeur par défaut  
     define( 'MAIL_REF', '' ); // valeur par défaut 

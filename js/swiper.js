@@ -90,14 +90,17 @@ $(".swiper-button-play").click(function(){
 
 /* Box info close */
 $(".close-box").click(function(){
-  $(".box-info").fadeOut();
+  $(".box-info").animate({ opacity: 0 });
+  setTimeout(function(){ 
+    $(".box-info").css('z-index', '-1')
+  }, 400);
   $(".info").fadeIn();
 });
 
 /* Box info open */
 $(".open-box-info").click(function(){
   $(".info").fadeOut();
-  $(".box-info").fadeIn();
+  $(".box-info").css('z-index', '4').animate({ opacity: 1 });
 });
 
 

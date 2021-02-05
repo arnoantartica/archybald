@@ -1349,10 +1349,13 @@ function parserDetail(xml) {
 
 
 
-
-
-
-
+        function setDetailFocus(){
+          if(window.innerWidth > 1100){
+            $('.box-info_details').focus()
+          }
+        }
+        document.addEventListener('click', setDetailFocus)
+        setDetailFocus()
 
 
 
@@ -1924,9 +1927,9 @@ function DisplacementSliderCtrl() {
         document.onkeydown = function (e) {
           e = e || window.event;
 
-          if (e.keyCode == 38 || e.keyCode == 37) {
+          if (e.keyCode == 37) {
             _this7.prevSlide.call(_this7);
-          } else if (e.keyCode == 40 || e.keyCode == 39) {
+          } else if (e.keyCode == 39) {
             _this7.nextSlide.call(_this7);
           }
         };

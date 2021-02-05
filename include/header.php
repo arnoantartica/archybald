@@ -6,6 +6,13 @@ if(!$_lang) {
     $_lang = 'fr-BE';
 }
 require_once('recaptcha-keys.php');
+
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+if ( preg_match('/windows/i', $user_agent ) ){
+  $isWindows = true;
+}else{
+  $isWindows = false;
+}
 ?>
 <!DOCTYPE html>
 <html data-lang-attr="lang" lang="<?=$_languages[$_lang];?>">

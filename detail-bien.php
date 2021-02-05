@@ -19,13 +19,19 @@
         <div class="content-wrap">
             <!-- Info cadre -->
             <aside class="box-info">
+                <?php 
+                    $custom_class = '';
+                    if($isWindows){
+                        $custom_class = 'custom__win-scroll';
+                    }
+                ?>
                 <div class="box-info_wrap">
                     <div class="box-info_btns">
                         <a class="estate-back" href="#"><i class="fas fa-angle-double-left"></i> <span data-lang="prevBtnText">Previous estate</span> </a>
                         <a class="estate-forward" href="#"> <span data-lang="nextBtnText">Next estate</span> <i class="fas fa-angle-double-right"></i></a>
                     </div>
-                    <div class="box-info_details">
-                        <div class="close-box" data-lang="close">Fermer</div>
+                    <div class="box-info_details <?php echo $custom_class ?>" tabindex="-1">
+                        <div class="close-box"><div class="close-box__content" data-lang="close">Fermer</div></div>
                         <!-- title -->
                         <div class="title-wrap">
                             <h2 id="SingleTitle"></h2>

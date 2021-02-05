@@ -66,23 +66,27 @@ $(document).ready(function() {
 /* Pause */
 $(".pause-btn").click(function(){
   if($(this).hasClass('active')){
-    galleryThumbs.autoplay.start();
+    $('.slider_main').slick('slickPlay');
+    $('.slider_main').removeClass('stop_slide-animation')
   }else{
-    galleryThumbs.autoplay.stop();
+    $('.slider_main').slick('slickPause');
+    $('.slider_main').addClass('stop_slide-animation')
   }
   $('.pause-btn').toggleClass('active')
   $(".swiper-button-pause").fadeToggle();
   $(".swiper-button-play").fadeToggle();
 });
 $(".swiper-button-pause").click(function(){
-  galleryThumbs.autoplay.stop();
+  $('.slider_main').slick('slickPause');
+  $('.slider_main').addClass('stop_slide-animation')
   $('.pause-btn').addClass('active')
   $(".swiper-button-pause").fadeOut();
   $(".swiper-button-play").fadeIn();
 });
 /* Play */
 $(".swiper-button-play").click(function(){
-  galleryThumbs.autoplay.start();
+  $('.slider_main').slick('slickPlay');
+  $('.slider_main').removeClass('stop_slide-animation')
   $('.pause-btn').removeClass('active')
   $(".swiper-button-play").fadeOut();
   $(".swiper-button-pause").fadeIn();

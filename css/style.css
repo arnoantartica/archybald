@@ -2188,6 +2188,42 @@ a.disabled {
   left: -15px;
 }
 
+#detail-bien .box-info .slider_nav .slick-slide {
+  margin: 0 1px 1px;
+}
+
+#detail-bien .box-info .slider_nav .slider__item__wrap-thumb {
+  position: relative;
+  width: 100%;
+  padding-bottom: 90%;
+  margin: 0 1px;
+}
+
+#detail-bien .box-info .slider_nav .slider__item__wrap-thumb:after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border: 2px solid #08bdc4;
+  opacity: 0;
+}
+
+#detail-bien .box-info .slider_nav .slider__item__wrap-thumb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#detail-bien .box-info .slider_nav .slick-current.slick-center .slider__item__wrap-thumb:after {
+  opacity: 1;
+}
+
 #detail-bien .box-info .gallery-thumbs {
   height: 70px;
   -ms-flex-negative: 0;
@@ -2354,6 +2390,285 @@ a.disabled {
 
 #detail-bien .autoplay-icons .fa-play.fa-play, #detail-bien .autoplay-icons .fa-pause.fa-play {
   display: none;
+}
+
+.slider_main,
+.slider_main .slick-list,
+.slider_main .slick-track,
+.slider_main .slider__item {
+  height: 100%;
+}
+
+.slider_main .slider__item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slider__item {
+  outline: none;
+}
+
+.slider__item img {
+  max-width: 100%;
+}
+
+.animation_play {
+  will-change: transform, transform-origin;
+}
+
+.animation-zoomIn {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomIn.animation_play {
+  -webkit-animation-name: zoom-in;
+          animation-name: zoom-in;
+}
+
+@-webkit-keyframes zoom-in {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+}
+
+.animation-zoomOut {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomOut.animation_play {
+  -webkit-animation-name: zoom-out;
+          animation-name: zoom-out;
+}
+
+@-webkit-keyframes zoom-out {
+  0% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes zoom-out {
+  0% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.animation-zoomInToRight {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transform-origin: 20% 70%;
+          transform-origin: 20% 70%;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomInToRight.animation_play {
+  -webkit-animation-name: zoom-in-to-right;
+          animation-name: zoom-in-to-right;
+}
+
+@-webkit-keyframes zoom-in-to-right {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 20% 70%;
+            transform-origin: 20% 70%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 80% 30%;
+            transform-origin: 80% 30%;
+  }
+}
+
+@keyframes zoom-in-to-right {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 20% 70%;
+            transform-origin: 20% 70%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 80% 30%;
+            transform-origin: 80% 30%;
+  }
+}
+
+.animation-zoomInToLeft {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transform-origin: 80% 70%;
+          transform-origin: 80% 70%;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomInToLeft.animation_play {
+  -webkit-animation-name: zoom-in-to-left;
+          animation-name: zoom-in-to-left;
+}
+
+@-webkit-keyframes zoom-in-to-left {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 70%;
+            transform-origin: 80% 70%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 30%;
+            transform-origin: 20% 30%;
+  }
+}
+
+@keyframes zoom-in-to-left {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 70%;
+            transform-origin: 80% 70%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 30%;
+            transform-origin: 20% 30%;
+  }
+}
+
+.animation-zoomOutToRight {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transform-origin: 20% 30%;
+          transform-origin: 20% 30%;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomOutToRight.animation_play {
+  -webkit-animation-name: zoom-out-to-right;
+          animation-name: zoom-out-to-right;
+}
+
+@-webkit-keyframes zoom-out-to-right {
+  0% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 30%;
+            transform-origin: 20% 30%;
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 70%;
+            transform-origin: 80% 70%;
+  }
+}
+
+@keyframes zoom-out-to-right {
+  0% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 30%;
+            transform-origin: 20% 30%;
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 70%;
+            transform-origin: 80% 70%;
+  }
+}
+
+.animation-zoomOutToLeft {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transform-origin: 80% 30%;
+          transform-origin: 80% 30%;
+  -webkit-animation: 7s 0.2s linear forwards;
+          animation: 7s 0.2s linear forwards;
+}
+
+.animation-zoomOutToLeft.animation_play {
+  -webkit-animation-name: zoom-out-to-left;
+          animation-name: zoom-out-to-left;
+}
+
+@-webkit-keyframes zoom-out-to-left {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 30%;
+            transform-origin: 80% 30%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 70%;
+            transform-origin: 20% 70%;
+  }
+}
+
+@keyframes zoom-out-to-left {
+  0% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transform-origin: 80% 30%;
+            transform-origin: 80% 30%;
+  }
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transform-origin: 20% 70%;
+            transform-origin: 20% 70%;
+  }
+}
+
+.stop_slide-animation .animation_play {
+  -webkit-animation-play-state: paused !important;
+          animation-play-state: paused !important;
 }
 
 /* Virtual link */

@@ -68,9 +68,13 @@
                         <!-- home link -->
                         <a data-scroll-back class="back" href="biens.php">Tous nos biens</a>
                         <div class="slider-wrap">
-                            <div class="swiper-container gallery-thumbs" style="overflow-y: scroll;">
-                                <div class="swiper-wrapper"></div>
-                                <!-- Add Arrows -->
+                            <div class="slider slider_nav">
+                                <div class="slider__item"><img data-lazy="./images/1.jpg" alt=""></div>
+                                <div class="slider__item"><img data-lazy="./images/2.jpg" alt=""></div>
+                                <div class="slider__item"><img data-lazy="./images/3.jpg" alt=""></div>
+                                <div class="slider__item"><img data-lazy="./images/4.jpg" alt=""></div>
+                                <div class="slider__item"><img data-lazy="./images/5.jpg" alt=""></div>
+                                <div class="slider__item"><img data-lazy="./images/6.jpg" alt=""></div>
                             </div>
                             <div class="next-slide slider-arrows for-gallery-thumbs"><i class="fas fa-chevron-right"></i></div>
                             <div class="prev-slide slider-arrows for-gallery-thumbs"><i class="fas fa-chevron-left"></i></div>
@@ -96,29 +100,20 @@
 
 
             <!-- Swiper -->
-            <section class="swiper-container gallery-top" style="display:none">
-                <div class="swiper-wrapper">
+            <section class="swiper-container gallery-top">
+                <div class="slider slider_main">
+                    <div class="slider__item"><img class="animation-zoomIn" data-lazy="./images/1.jpg" alt=""></div>
+                    <div class="slider__item"><img class="animation-zoomOut" data-lazy="./images/2.jpg" alt=""></div>
+                    <div class="slider__item"><img class="animation-zoomInToRight" data-lazy="./images/3.jpg" alt=""></div>
+                    <div class="slider__item"><img class="animation-zoomOutToLeft" data-lazy="./images/4.jpg" alt=""></div>
+                    <div class="slider__item"><img class="animation-zoomInToLeft" data-lazy="./images/5.jpg" alt=""></div>
+                    <div class="slider__item"><img class="animation-zoomOutToRight" data-lazy="./images/6.jpg" alt=""></div>
                 </div>
                 <!-- Add Arrows -->
-                <div class="next-slide slider-arrows"><i class="fas fa-chevron-right"></i></div>
-                <div class="prev-slide slider-arrows"><i class="fas fa-chevron-left"></i></div>
+                <div class="slider_main__arrow next-slide slider-arrows"><i class="fas fa-chevron-right"></i></div>
+                <div class="slider_main__arrow prev-slide slider-arrows"><i class="fas fa-chevron-left"></i></div>
             </section>
             <!-- Swiper END -->
-
-
-            <!-- NEW DISPLACEMENT SLIDER -->
-            <section id="displacement_slider" class="swiper-container gallery-top">
-
-                <div id="canvas_holder">
-                    <canvas id="canvas_slider"></canvas>
-    
-                    <div class="next-slide slider-arrows displacement"><i class="fas fa-chevron-right"></i></div>
-                    <div class="prev-slide slider-arrows displacement"><i class="fas fa-chevron-left"></i></div>
-                </div>
-
-
-            </section>
-            <!-- NEW DISPLACEMENT SLIDER END-->
 
 
         </div>
@@ -327,8 +322,7 @@ $("div.x").bind('click', function() {
 
 <!-- DISPLACEMENT SLIDER -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 
 <?php require('include/footer.php'); ?>

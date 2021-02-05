@@ -22,6 +22,8 @@ if ( preg_match('/windows/i', $user_agent ) ){
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="css/update.css" />
     <link rel="stylesheet" href="css/style.css">
     <link rel=“icon” href="./img/Alogo.png" type="image/x-icon">

@@ -65,6 +65,8 @@ $_lang_cur = array(
 
 "Contact"  => "Contact",
 
+"MesuresCOVID" => "COVID-19 maatregelen (FR)",
+
 
 
 "All"  => "Alle",

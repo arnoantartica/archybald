@@ -49,6 +49,7 @@ $_lang_cur = array(
 "ByReference"  => "By reference",
 "RechercheByReference"  => "Recherche by reference",
 "Contact"  => "Contact",
+"MesuresCOVID" => "COVID-19 maatregelen (FR)",
 
 "All"  => "All",
 "Houses"  => "Houses",

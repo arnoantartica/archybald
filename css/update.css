@@ -61,7 +61,7 @@ canvas#canvas_slider {
 
 
 
-.swiper-slide-active {
+.swiper-container-intro {
     border: 2px solid #08bdc4;
     box-sizing: border-box;
 }
@@ -75,7 +75,7 @@ canvas#canvas_slider {
 
 
 /*LOADER PAGE DETAIL*/
-.wrap-detail {
+.wrap-loader {
     position: fixed;
     width:100vw;
     height:100vh;
@@ -84,36 +84,38 @@ canvas#canvas_slider {
     left:0;
     background: #3b3c3e;
     transition: 0.6s;
+    opacity: 1;
     z-index:111;
+    will-change: opacity;
 }
 /* @media screen and (max-width: 1100px) {
     .wrap-detail {
         height: 56.25vw;
     }
 } */
-.wrap-detail.hide-me {
-    visibility: hidden;
+.wrap-loader.hide-me{
     opacity: 0;
+    visibility: hidden;
 }
-.wrap-detail .loading {
+.wrap-loader .loading {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.wrap-detail .loading .text {
+.wrap-loader .loading .text {
     color: white;
     display: inline-block;
     margin-left: 10px;
     width: 130px;
 }
-.wrap-detail .loading .bounceball {
+.wrap-loader .loading .bounceball {
     position: relative;
     display: inline-block;
     height: 37px;
     width: 15px;
 }
-.wrap-detail .loading .bounceball::before {
+.wrap-loader .loading .bounceball::before {
     position: absolute;
     content: '';
     display: block;

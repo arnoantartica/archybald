@@ -650,7 +650,7 @@ function parserDetail(xml) {
           mainSlider.on('lazyLoaded', function(event, slick, image, src){
             // console.log(image, src)
             wasLoad++;
-            
+
             if(wasLoad === loadToshow){
               $('.wrap-detail').addClass('hide-me')
             }
@@ -712,7 +712,7 @@ function parserDetail(xml) {
           });
       
           navSlider.slick({
-              slidesToShow: 2,
+              slidesToShow: 3,
               slidesToScroll: 1,
               asNavFor: '.slider_main',
               dots: false,
@@ -755,24 +755,44 @@ function parserDetail(xml) {
             })
 
         });
-        shuffle(whiseSliderArr);
+        // shuffle(whiseSliderArr);
 
         var i = 0;
         var animI = 0;
 
+        var imgLoaded = 0;
+
+        function imgLoadedCallback(){
+            imgLoaded++;
+
+            if(imgLoaded === whiseSliderArr.length){
+                CarouselInit();
+            }
+
+        }
+
         for(i=0; i<whiseSliderArr.length; i++) {
 
-            var data = '<div class="slider__item"><img class="' + animationOrder[animI] + '" data-lazy="' + whiseSliderArr[i].big + '" alt=""></div>';
+            var img = document.createElement('img');
+            img.onload = imgLoadedCallback;
+            img.onerror = function() {
+                alert("Ошибка во время загрузки изображения");
+              };
+            img.src = whiseSliderArr[i].big;
+
+            var data = '<div class="slider__item swiper-slide"><div class="swiper-slide__bg ' + animationOrder[animI] + '" style="background-image: url(' + whiseSliderArr[i].big + ')"></div></div>';
             mainSlider.append(data);
 
-            data = '<div class="slider__item"><div class="slider__item__wrap-thumb"><img data-lazy="' + whiseSliderArr[i].small + '" alt=""></div></div>';
+            data = '<div class="slider__item swiper-slide" style="background-image: url(' + whiseSliderArr[i].small + ')"></div>';
             navSlider.append(data);
 
             animI = animI === (animationOrder.length - 1) ? 0 : (animI + 1);
 
         }
 
-        estateSlider();
+        // estateSlider();
+
+        // CarouselInit()   
 
         // console.log('images_for_displacement_slider', images_for_displacement_slider)
 
@@ -790,7 +810,7 @@ function parserDetail(xml) {
 
 
         //documents
-        $('#docs').html("");
+        // $('#docs').html("");
 
         $(this).find('Documents EstateServiceGetEstateListResponseDocument').each(function() {
             var dl = $(this).find('LanguageID').text();
@@ -807,7 +827,7 @@ function parserDetail(xml) {
 
                 var data = '<a href="' + $(this).find('Url').text() + '" download="' + $(this).find('Url').text() + '" target="_blank" class="pdf" title="' + doct + '"><button data-lang="btnMoreDetail">' + text + '</button></a>';
 
-                $('#docs').append(data);
+                $('#docs').prepend(data);
                 return false;
             }
         });

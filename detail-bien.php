@@ -8,7 +8,7 @@
         <?php require('include/contact-info.php'); ?>
         
         <!-- Loader -->
-        <div class="wrap-detail">
+        <div class="wrap-loader wrap-detail">
             <div class="loading">
                 <div class="bounceball"></div>
                 <img src="img/logo-archybald-top.png" alt="Archybald" class="text" width="80">
@@ -64,17 +64,15 @@
                             <div class="energydata smaller white"></div>
                         </div>
                         <!-- PDF link -->
-                        <div id="docs"></div>
+                        <div id="docs">
+                        <a href="https://federia.immo/images/brev/protocole-sectoriel-final-12-fevrier-fr_file.pdf" download="https://federia.immo/images/brev/protocole-sectoriel-final-12-fevrier-fr_file.pdf" target="_blank" class="pdf" title="Mesures%20COVID.pdf"><button data-lang="MesuresCOVID">Mesures COVID</button></a>
+                        </div>
                         <!-- home link -->
                         <a data-scroll-back class="back" href="biens.php">Tous nos biens</a>
                         <div class="slider-wrap">
-                            <div class="slider slider_nav">
-                                <div class="slider__item"><img data-lazy="./images/1.jpg" alt=""></div>
-                                <div class="slider__item"><img data-lazy="./images/2.jpg" alt=""></div>
-                                <div class="slider__item"><img data-lazy="./images/3.jpg" alt=""></div>
-                                <div class="slider__item"><img data-lazy="./images/4.jpg" alt=""></div>
-                                <div class="slider__item"><img data-lazy="./images/5.jpg" alt=""></div>
-                                <div class="slider__item"><img data-lazy="./images/6.jpg" alt=""></div>
+                            <div class="swiper-container gallery-thumbs" style="overflow-y: scroll;">
+                                <div class="swiper-wrapper slider_nav"></div>
+                                <!-- Add Arrows -->
                             </div>
                             <div class="next-slide slider-arrows for-gallery-thumbs"><i class="fas fa-chevron-right"></i></div>
                             <div class="prev-slide slider-arrows for-gallery-thumbs"><i class="fas fa-chevron-left"></i></div>
@@ -101,13 +99,13 @@
 
             <!-- Swiper -->
             <section class="swiper-container gallery-top">
-                <div class="slider slider_main">
-                    <div class="slider__item"><img class="animation-zoomIn" data-lazy="./images/1.jpg" alt=""></div>
-                    <div class="slider__item"><img class="animation-zoomOut" data-lazy="./images/2.jpg" alt=""></div>
-                    <div class="slider__item"><img class="animation-zoomInToRight" data-lazy="./images/3.jpg" alt=""></div>
-                    <div class="slider__item"><img class="animation-zoomOutToLeft" data-lazy="./images/4.jpg" alt=""></div>
-                    <div class="slider__item"><img class="animation-zoomInToLeft" data-lazy="./images/5.jpg" alt=""></div>
-                    <div class="slider__item"><img class="animation-zoomOutToRight" data-lazy="./images/6.jpg" alt=""></div>
+                <div class="swiper-wrapper slider_main">
+                    <!-- <div class="slider__item"><img class="animation-zoomIn" data-lazy="./images/1.jpg" alt=""></div>
+                        <div class="slider__item"><img class="animation-zoomOut" data-lazy="./images/2.jpg" alt=""></div>
+                        <div class="slider__item"><img class="animation-zoomInToRight" data-lazy="./images/3.jpg" alt=""></div>
+                        <div class="slider__item"><img class="animation-zoomOutToLeft" data-lazy="./images/4.jpg" alt=""></div>
+                        <div class="slider__item"><img class="animation-zoomInToLeft" data-lazy="./images/5.jpg" alt=""></div>
+                        <div class="slider__item"><img class="animation-zoomOutToRight" data-lazy="./images/6.jpg" alt=""></div> -->
                 </div>
                 <!-- Add Arrows -->
                 <div class="slider_main__arrow next-slide slider-arrows"><i class="fas fa-chevron-right"></i></div>

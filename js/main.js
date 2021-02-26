@@ -7,19 +7,6 @@ $(".close-menu").click(function(){
   $(".menu").removeClass("active");
 });
 
-/* Anim Logo */
-$(document).ready(function(){
-  setTimeout(function(){ 
-    $(".anim-1").addClass("active"); 
-  }, 500);
-  setTimeout(function(){ 
-    $(".anim-2").addClass("active");
-  }, 1000);
-  setTimeout(function(){ 
-    $(".anim-3").addClass("active");
-  }, 1600);
-});
-
 /* Loader */
 var biensReady = new Event('biensReady');
 biensReady.initEvent('biensReady', true, true);

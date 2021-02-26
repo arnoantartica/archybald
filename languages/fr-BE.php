@@ -69,6 +69,8 @@ $_lang_cur = array(
 
 "Contact"  => "Contact",
 
+"MesuresCOVID" => "Mesures COVID",
+
 
 
 "All"  => "Tous",

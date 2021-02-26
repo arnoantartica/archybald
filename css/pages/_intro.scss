@@ -6,15 +6,17 @@
     height: calc(var(--vh, 1vh) * 100);
   }
   .swiper-slide {
-    &.intro-1{
-      background: url('../img/slide-intro1.jpg') center/cover;
-    }
-    &.intro-2{
-      background: url('../img/slide-intro2.jpg') center/cover;
-    }
-    &.intro-3{
-      background: url('../img/slide-intro3.jpg') center/cover;
-    }
+    background-position: center;
+    background-size: cover;
+    // &.intro-1{
+    //   background: url('../img/slide-intro1.jpg') center/cover;
+    // }
+    // &.intro-2{
+    //   background: url('../img/slide-intro2.jpg') center/cover;
+    // }
+    // &.intro-3{
+    //   background: url('../img/slide-intro3.jpg') center/cover;
+    // }
   }
   
   .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {

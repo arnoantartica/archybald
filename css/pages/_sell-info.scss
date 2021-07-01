@@ -145,9 +145,12 @@
     &__line {
         width: 85px;
         height: 85px;
-        margin: 15px;
+        margin: 0 15px;
         display: flex;
         align-items: center;
+        @media screen and (max-width: 640px) {
+            margin: 15px 0;
+        }
         &:before {
             content: '';
             display: inline-block;

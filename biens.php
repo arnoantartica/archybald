@@ -31,6 +31,15 @@
         <!-- Loader END -->
 
         <div id="biens"></div>
+
+        <div class="fake-biens-item aos-init" data-fake-block="1" data-aos="fade-up" data-aos-offset="50" hidden >
+            <div class="fake-biens-item__content">
+                <div class="fake-biens-item__text" data-lang="FakeBlockTitle">
+                    Vous envisagez <span class="fw-medium">de vendre</span> <br>un bien immobilier <br>à <span class="fw-medium">valeur ajoutée</span> ?
+                </div>
+                <a href="sell-info.php" class="fake-biens-item__btn" data-lang="FakeBlockBtn">Évaluons le potentiel</a>
+            </div>
+        </div>
         
     </div>
 

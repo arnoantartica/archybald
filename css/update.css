@@ -2,7 +2,7 @@
 
 
 
-a[data-aos="fade-up"] {
+[data-aos="fade-up"] {
 	opacity: 0;
 	transform: translate3d(0, 15px, 0);
 	transition-duration: 1s;
@@ -10,7 +10,7 @@ a[data-aos="fade-up"] {
 }
 
 
-a[data-aos="fade-up"].aos-animate {
+[data-aos="fade-up"].aos-animate {
     opacity: 1;
     transform: translate3d(0, 0px, 0);
 }

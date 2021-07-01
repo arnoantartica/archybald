@@ -8,6 +8,8 @@ var $is_end = 0;
 var parser = '';
 var $language = '';
 
+var globalBiensCounter = 0;
+
 var per_page = 299;
 var page = 0;
 var show = true;
@@ -336,19 +338,6 @@ function getUniqTags(tags) {
 function is_touch_device() {
     return !!('ontouchstart' in window);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var urlParameters = {
     clientId: "c7b837316d7c4014ba59",
@@ -835,6 +824,8 @@ function parserDetail(xml) {
     setLanguage(lang);
 }
 
+
+
 function parserList(xml, replace) {
     if(replace){
         $("#biens").html('');
@@ -846,6 +837,14 @@ function parserList(xml, replace) {
     if ($("#biens>div.noresult").length) $("#biens>div.noresult").remove();
 
     var estatesArr = $(xml).find("EstateServiceGetEstateListResponseEstate");
+
+    var fakeBlocks = Array.from(document.querySelectorAll("[data-fake-block]"));
+    fakeBlocksIndex = fakeBlocks.map(function(item){
+        return item.dataset.fakeBlock * 1;
+    })
+
+    console.log(fakeBlocksIndex);
+
 
     estatesArr.each(function () {
         var country_id = parseInt($(this).find('CountryId:first').text());
@@ -870,6 +869,12 @@ function parserList(xml, replace) {
         var disp_status = $(this).find("DisplayStatusId:first").text();
         var peb = $(this).find("EnergyClass:first").text().toLocaleLowerCase();
 
+        if(fakeBlocksIndex.indexOf(globalBiensCounter) !== -1){
+            var block = fakeBlocks[fakeBlocksIndex.indexOf(globalBiensCounter)]
+            var html = block.outerHTML.replace('hidden', '');
+            data += html;
+        }
+
         if (status_id == 3 || status_id == 4)
         var price_text = '<p class="price"></p>';
         else
@@ -886,122 +891,30 @@ function parserList(xml, replace) {
         var l = langs_name[langs.indexOf(lang)];
         l = "/" + l + "/detail-bien.php#" + eid;
 
+        var additionalClasses = [];
+
+        if(disp_status == 3){
+            additionalClasses.push('month')
+        }
+        if(status_id >= 3 && status_id <= 23){
+            additionalClasses.push('disabled')
+        }
+
         var data_one =
-        '<a data-detail-id="' +
-        eid +
-        '" ' +
-        'data-aos="fade-up" data-aos-offset="50" ' +
-        'href="' +
-        l +
-        '" class="biens-item ' +
-        (disp_status == 3 ? " month " : "") +
-        (status_id != 3 &&
-        status_id != 4 &&
-        status_id != 5 &&
-        status_id != 6 &&
-        status_id != 7 &&
-        status_id != 8 &&
-        status_id != 9 &&
-        status_id != 10 &&
-        status_id != 11 &&
-        status_id != 12 &&
-        status_id != 13 &&
-        status_id != 14 &&
-        status_id != 15 &&
-        status_id != 16 &&
-        status_id != 17 &&
-        status_id != 18 &&
-        status_id != 19 &&
-        status_id != 20 &&
-        status_id != 21 &&
-        status_id != 22 &&
-        status_id != 23
-            ? ""
-            : " disabled ") +
-        '">' +
-        (disp_status == 3
-            ? '   <div data-lang="EstateOfMonth" class="bienduMois">' +
-            $language.EstateOfMonth +
-            "</div> "
-            : "") +
-        '   <div class="case-bien ~b1" style="background: url(' +
-        pic +
-        ') center/cover;">' +
-        '       <div class="info-bien">' +
-        "           <h4>" +
-        city +
-        "</h4>" +
-        '           <div class="price-peb">' +
-        price_text +
-        "               " +
-        (peb ? '<img src="img/peb-' + peb + '.png" alt="peb">' : "") +
-        "               " +
-        (status_id != 1 && status_id != 2
-            ? '<p class="price">' + status + "</p>"
-            : '<p class="price"></span>') +
-        "           </div>" +
-        "       </div>" +
-        "   </div>" +
+        '<a data-detail-id="' + eid + '" ' + 'data-aos="fade-up" data-aos-offset="50" ' + 'href="' + l + '" class="biens-item ' + additionalClasses.join(' ') + '">' +
+            (disp_status == 3 ? '<div data-lang="EstateOfMonth" class="bienduMois">' + $language.EstateOfMonth + "</div>" : "") + 
+            '<div class="case-bien ~b1" style="background: url(' + pic + ') center/cover;">\
+                <div class="info-bien">\
+                    <h4>' + city + '</h4>' +
+                        '<div class="price-peb">' + price_text + (peb ? '<img src="img/peb-' + peb + '.png" alt="peb">' : "") +
+        (status_id != 1 && status_id != 2 ? '<p class="price">' + status + "</p>" : '') + "</div>" +
+                "</div>" +
+            "</div>" +
         "</a>";
         if (disp_status == 3) data = data_one + data;
         else data = data + data_one;
-        /*
-                //Bien du mois
-                if(disp_status == 3) {
-                    data = '<div class="col-sm-12 col-md-8 col-xl-8 grid-item  size1 Portfolio  ">'+
-                            ((status_id != 3 && status_id != 4) ?//sold & rented
-                            '<a class="bienBox" data-detail-id="'+eid+'" href="detail-bien.php#'+eid+'">'+
-                            '     <img src="' + pic_big + '" alt="'+ pic_big + '" />'+
-                            '</a>'
-                            :
-                            '<span class="bienBox">'+
-                            '     <img class="estateThumb" src="' + pic + '" alt="'+ pic + '" />'+
-                            '</span>'
-                            )+((disp_status == 3) ?
-                            '<div class="featured wow fadeIn" data-wow-duration="1s" data-wow-iteration="1" data-wow-delay="1s">'+
-                            '    <span data-lang="EstateOfMonth" class="bienduMois">'+$language.EstateOfMonth+'</span> '+
-                            '</div>' : ''
-                            )+
-                            '<div class="imagebox-desc wow fadeIn"  data-wow-duration="1s" data-wow-iteration="1" data-wow-delay="1s">'+
-                            '    <div id="eom" class="col-sm-6 col-md-6 no-padding " > '+
-                            '        <span class="commune">' + city + '</span><br />'+
-                            '        ' + ((price_show == "false") ? '<span class="currency" data-lang="RequestPrice"></span>' : (status_id != 3 && status_id != 4) ? '<span class="prix">' + price + '</span><span class="currency">' + currency + '</span>' : '<span class="currency" data-lang=""></span>')+
-                            '        ' + ((!peb) ? '<span class="PEB"> </span> ' : '<span class="PEB"><img src="img/PEB/peb-'+peb+'.png"> </span> ')+
-                            '    </div>'+
-                            '    <div class="col-sm-6 col-md-6 col-xs-6 " style="text-align: right; padding-top: 24px;"> '+
-                            '        ' + ((status_id != 1 && status_id != 2) ? '<span id="propertyStatusSR" class="statut">' + status + '</span>' :         '<span id="propertyStatusSR" class="statut" data-lang=""></span>')+   
-                            '    </div>'+
-                            '</div>'+
-                        '</div>' + data;
-                } else {
-                    data += '<div class="col-sm-12 col-md-4 col-xl-4 grid-item size2 Portfolio ">'+
-                            ((status_id != 3 && status_id != 4 && status_id !=5 && status_id !=6 && status_id !=7 && status_id !=8 && status_id !=9 && status_id !=10 && status_id !=11
-                            && status_id !=12 && status_id !=13 && status_id !=14 && status_id !=15 && status_id !=16 && status_id !=17 && status_id !=18 && status_id !=19 && status_id !=20 && status_id !=21
-                            && status_id !=22 && status_id !=23) ?//sold & rented
-                            '<a class="bienBox" data-detail-id="'+eid+'" href="detail-bien.php#'+eid+'">'+
-                            '     <img class="estateThumb" src="' + pic + '" alt="'+ pic + '" />'+
-                            '</a>'
-                            :
-                            '<span class="bienBox">'+
-                            '     <img src="' + pic + '" alt="'+ pic + '" />'+
-                            '</span>'
-                            )+((disp_status == 3) ?
-                            '<div class="featured wow fadeIn" data-wow-duration="1s" data-wow-iteration="1" data-wow-delay="1s">'+                    
-                            '    <span data-lang="EstateOfMonth" class="bienduMois">'+$language.EstateOfMonth+'</span> '+
-                            '</div>' : '')+
-                            '<div class="imagebox-desc wow fadeIn"  data-wow-duration="1s" data-wow-iteration="1" data-wow-delay="1s">'+                    
-                            '    <div class="col-xs-8 col-sm-8 col-md-8 no-padding">'+
-                            '        <span class="commune">' + city + '</span><br />'+
-                            '        ' + ((price_show == "false") ? '<span class="currency" data-lang="RequestPrice"></span>' : (status_id != 3 && status_id != 4) ? '<span class="prix">' + price + '</span><span class="currency">' + currency + '</span>' : '<span class="currency" data-lang=""></span>')+
-                            '        ' + ((!peb) ? '<span class="PEB"> </span> ' : '<span class="PEB"><img src="img/PEB/peb-'+peb+'.png"> </span> ')+
-                            '    </div>'+
-                            '    <div class="col-xs-4 col-sm-4 col-md-4 " style="text-align: right; padding-top: 24px;"> '+
-                            '        ' + ((status_id != 1 && status_id != 2) ? '<span id="propertyStatusSR" class="statut">' + status + '</span>' :         '<span id="propertyStatusSR" class="statut" data-lang=""></span>')+                       
-                            '    </div>'+
-                            '</div>'+
-                        '</div>';
-                }
-        */
+
+        globalBiensCounter++
     });
 
     var currentBiensCount = $('.biens-item').length;

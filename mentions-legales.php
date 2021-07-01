@@ -21,15 +21,16 @@
         FAX 00/32(0)2.791.53.66 <br>
         MOBILE 00/32(0)475/24.43.48 <br>
         e-mail : info@archybald.be <br>
-        www.archybald.be <br>
+        <a href="https://archybald.be/" target="_blank">www.archybald.be</a> <br>
+        <span data-lang="VAT">N° D’ENTREPRISE & TVA</span> 0836 102 386 <br>
         <span data-lang="ProfessionalInsurance">Assurance professionnelle</span> : AXA 730 390 160 <br>
-        <span data-lang="VAT">TVA</span> 0836 102 386 <br>
-        <span data-lang="OfficialAgent">Agent immobilier agréé IPI</span> N° 505226
+        <span data-lang="OfficialAgent">Agent immobilier agréé IPI</span> N° 505226 octroyé en Belgique
       </p>
       <!-- p2 -->
       <p>
-        <span data-lang="OfficialControlAuthority">Instance de contrôle - IPI</span> – rue de Luxembourg, 16B – 1000 BRUXELLES
-        <span data-lang="ProfessionalCode">Code de déontologie : IPI</span> – www.ipi.be
+        <span data-lang="OfficialControlAuthority">Instance de contrôle - IPI</span> – rue de Luxembourg, 16B – 1000 BRUXELLES 
+        <span data-lang="ProfessionalCode">Code de déontologie : IPI</span> – <a href="http://www.ipi.be/" target="_blank">www.ipi.be</a> <br>
+        <span data-lang="ResponsableAntiBlanchiment">Responsable anti-blanchiment</span> : Marc SORGELOOSE 
       </p>
       <!-- p3 -->
       <h5 data-lang="OperationalOffice">Siège d'exploitation</h5>

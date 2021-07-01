@@ -22,6 +22,8 @@ $_lang_cur = array(
     "mentions-legales" => "Mentions légales",
     "reference.php" => "Biens par réference",
     "reference" => "Biens par réference",
+    "sell-info.php" => "Vendre des informations",
+    "sell-info" => "Vendre des informations",
 ),
 "metaPageTitle" => "Découvrez nos biens de prestige <br>à <strong>vendre</strong> et à <strong>louer</strong>",
 
@@ -98,6 +100,11 @@ $_lang_cur = array(
 "MyReference"  => "Ma référence",
 
 
+"FakeBlockTitle" => "Vous envisagez <span class='fw-medium'>de vendre</span> <br>un bien immobilier <br>à <span class='fw-medium'>valeur ajoutée</span> ?",
+
+"FakeBlockBtn" => "Évaluons le potentiel",
+
+
 
 "AboutUs"  => "À propos",
 
@@ -154,15 +161,17 @@ Agent immobilier agréé n° 505 226",
 
 "RegisteredOffice" => "Siège Social",
 
-"ProfessionalInsurance" => "Assurance professionnelle",
+"ProfessionalInsurance" => "Assurance professionnelle et cautionnement",
 
-"VAT" => "TVA",
+"VAT" => "N° D’ENTREPRISE & TVA",
 
 "OfficialAgent" => "Agent immobilier agréé IPI",
 
 "OfficialControlAuthority" => "Instance de contrôle - IPI",
 
 "ProfessionalCode" => "Code de déontologie : IPI",
+
+"ResponsableAntiBlanchiment" => "Responsable anti-blanchiment",
 
 "OperationalOffice" => "Siège d’exploitation",
 

@@ -88,13 +88,13 @@
         top: 0;
         left: 0;
         right: 0;
-        max-width: 348px;
+        max-width: 280px;
         margin: 0 auto;
-        padding: 28px 24px;
+        padding: 19px 20px;
         transform: translateY(-50%);
         background: #fff;
         color: #3b3c3e;
-        font-size: 18px;
+        font-size: 16px;
         text-transform: uppercase;
         transition: 0.2s;
         &:hover {
@@ -119,6 +119,11 @@
         font-weight: bold;
         & + .number {
             margin-left: 15px;
+        }
+    }
+    &__item {
+        @media screen and (min-width: 641px) {
+            flex-basis: 165px;
         }
     }
     &__item_1 {

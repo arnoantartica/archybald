@@ -14,7 +14,7 @@
     </section>
     <section id="sell-info">
         <div class="container-1170">
-            <h1 class="page-title">Vous  envisagez de vendre un bien ? <br>Discutons-en !</h1>
+            <h1 class="page-title">Vous  envisagez de <span class="fw-medium">vendre un bien</span> ? <br>Discutons-en !</h1>
             <p>Non, le luxe n'est pas une simple question de prix. La <strong>vente de belles demeures</strong>, en Belgique comme ailleurs, répond à bien d'autres critères : le lieu, l’ambiance, le patrimoine historique, l’architecture, la décoration, un coup de foudre, un nouveau chapitre de vie à inventer. </p>
             <p>Nous sommes Archybald, une agence belge profondément ancrée à Waterloo et spécialisée dans la <strong>vente de biens à valeur ajoutée</strong>.</p>
             <div class="potential-block">

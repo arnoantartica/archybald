@@ -1318,7 +1318,7 @@ p {
   transition: 0.2s;
 }
 .fake-biens-item__btn:hover {
-  background: #474747;
+  background: #1f1f1f;
 }
 
 /* Liste biens */
@@ -2528,13 +2528,13 @@ a.disabled {
   top: 0;
   left: 0;
   right: 0;
-  max-width: 348px;
+  max-width: 280px;
   margin: 0 auto;
-  padding: 28px 24px;
+  padding: 19px 20px;
   transform: translateY(-50%);
   background: #fff;
   color: #3b3c3e;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: uppercase;
   transition: 0.2s;
 }
@@ -2560,6 +2560,11 @@ a.disabled {
 }
 .potential-block .plus + .number {
   margin-left: 15px;
+}
+@media screen and (min-width: 641px) {
+  .potential-block__item {
+    flex-basis: 165px;
+  }
 }
 .potential-block__item_1 {
   display: flex;

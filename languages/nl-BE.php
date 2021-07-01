@@ -22,8 +22,8 @@ $_lang_cur = array(
     "mentions-legales" => "Wettelijke Informaties",
     "reference.php" => "Zoek met referencie",
     "reference" => "Zoek met referencie",
-    "sell-info.php" => "Verkoop informatie",
-    "sell-info" => "Verkoop informatie",
+    "vendre-bien-immobilier.php" => "Een woning verkopen",
+    "vendre-bien-immobilier" => "Een woning verkopen",
 ),
 "metaPageTitle" => "Ontdek onze prestigieuze eigendommen <br>te <strong>koop</strong> en te <strong>huur</strong>",
 

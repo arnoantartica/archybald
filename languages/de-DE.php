@@ -21,8 +21,8 @@ $_lang_cur = array(
     "mentions-legales" => "Legal information",
     "reference.php" => "Properties by reference",
     "reference" => "Properties by reference",
-    "sell-info.php" => "Informationen verkaufen",
-    "sell-info" => "Informationen verkaufen",
+    "vendre-bien-immobilier.php" => "Verkaufe eine Immobilie",
+    "vendre-bien-immobilier" => "Verkaufe eine Immobilie",
 ),
 "metaPageTitle" => "Découvrez nos biens de prestige <br>à <strong>vendre</strong> et à <strong>louer</strong>",
 

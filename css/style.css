@@ -2563,7 +2563,7 @@ a.disabled {
 }
 @media screen and (min-width: 641px) {
   .potential-block__item {
-    flex-basis: 165px;
+    flex-basis: 170px;
   }
 }
 .potential-block__item_1 {

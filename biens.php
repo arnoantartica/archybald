@@ -37,7 +37,7 @@
                 <div class="fake-biens-item__text" data-lang="FakeBlockTitle">
                     Vous envisagez <span class="fw-medium">de vendre</span> <br>un bien immobilier <br>à <span class="fw-medium">valeur ajoutée</span> ?
                 </div>
-                <a href="vendre-bien-immobilier.php" class="fake-biens-item__btn" data-lang="FakeBlockBtn">Évaluons le potentiel</a>
+                <a href="vendre-bien-immobilier-luxe-prestige.php" class="fake-biens-item__btn" data-lang="FakeBlockBtn">Évaluons le potentiel</a>
             </div>
         </div>
         

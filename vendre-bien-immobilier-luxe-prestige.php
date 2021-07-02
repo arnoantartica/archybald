@@ -21,7 +21,7 @@
                 <a href="contact.php" class="potential-block__btn">évaluons le potentiel </a>
                 <div class="potential-block__item potential-block__item_1"><span class="number">20</span><span class="potential-block__small">ans</span></div>
                 <div class="potential-block__line"></div>
-                <div class="potential-block__item potential-block__item_2"><span class="number"><span class="plus">+</span>150</span><span class="potential-block__small">Bien vendus</span></div>
+                <div class="potential-block__item potential-block__item_2"><span class="number"><span class="plus">+</span>150</span><span class="potential-block__small">Biens vendus</span></div>
                 <div class="potential-block__line"></div>
                 <div class="potential-block__item potential-block__item_3">Belgique <br>étranger</div>
             </div>
